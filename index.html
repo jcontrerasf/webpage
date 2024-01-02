@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es_CL">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Portafolio personal de Julio Contreras Fuica">
+	<meta name='theme-color' content='#3fffbb'>
+	<meta name="author" content="Julio Contreras Fuica">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+	<link href="arch/favicon.png" rel="shortcut icon">	
+	<link rel="stylesheet" href="arch/estilo.css">
+	<script src="arch/three.r95.min.js"></script>
+	<script src="arch/vanta.net.min.js"></script>
+	<script src="arch/datos.json"></script>
+	<title>Julio Contreras 💫 Portafolio personal</title>
+</head>
+<body style="opacity: 0;">
+	<div id="hamburguesa">
+		<div id="uno"></div>
+		<div id="dos"></div>
+		<div id="tres"></div>
+	</div>
+	<aside id="menu">
+		<div id="presentacion">
+			<h1>Julio Contreras Fuica</h1>
+			<h4>Estudiante de Ingeniería Civil Electrónica</h4>
+		</div>
+		<nav>
+			<ul id="secciones">
+				<li class="activo"><a href="#">Inicio</a></li>
+				<li class=""><a href="#about">Acerca de mí</a></li>
+				<li class=""><a href="#proyectos">Proyectos</a></li>
+			</ul>
+			<p>Correo electrónico</p>
+			<p id="correo"><span id="user"></span><span id="dominio"></span>cl</p>
+			<div id="redes">
+				<a href="https://github.com/jcontrerasf"><img src="img/GitHub-Mark-Light-64px.png"></a>
+				<a href="https://www.linkedin.com/in/julio-contreras-fuica-36702a1ab/"><img src="img/LI-In-Bug.png"></a>
+			</div>
+		</nav>
+	</aside>
+	<main id="principal">
+		<section id="contenido">
+			<span id="titulo" class="mono">Portafolio personal</span>
+			<h3>Proyecto en desarrollo.</h3>
+			<section id="about">
+				<h2 class="mono">Acerca de mí</h2>
+				<p>
+					<span id="saludo"></span>, soy Julio Contreras Fuica, tengo <span id="edad"></span> años y soy estudiante de <span id="año"></span> año de Ingeniería Civil Electrónica. Estoy interesado en electrónica de potencia, programación de microcontroladores y diseño electrónico.
+				</p>
+				<p>
+					En mi tiempo libre me gusta hacer proyectos interesantes y desafiantes, la mayoría de estos relacionados a la electrónica porque en verdad me apasiona mucho. En la siguiente sección mustro los proyectos que considero más llamativos.		
+				</p>
+			</section>
+			<!--
+			<div id="app-6">
+				<span>Prueba con vanilla javascript</span>
+			</div>-->
+			<h2 id="proyectos" class="mono">Proyectos</h2>
+			<section id="misProyectos">
+			</section>
+		</section>
+	</main>
+	</div>
+</body>
+</html>
+
+<script>
+	var tiempo = new Date();
+	var hora = tiempo.getHours();
+	var saludo = '';
+
+	var menu = document.getElementById("menu");
+
+	if (hora>=20 || hora<4) {
+		saludo = 'Buenas noches';
+	} else if (hora<12) {
+		saludo = 'Buenos días';
+	} else {
+		saludo = 'Buenas tardes';
+	}
+
+	document.getElementById('saludo').innerHTML = saludo;
+	document.getElementById('edad').innerHTML = datos.edad;
+	document.getElementById('año').innerHTML = datos.año;
+
+	document.getElementById('user').innerHTML = location.pathname.substring(2,18);
+	document.getElementById('dominio').innerHTML = 'sansano.usm'
+
+	//var elementos = '';
+  //for (var i = 0; i < datos.todo.length; i++) {
+  //	elementos = elementos + '<li>' + datos.todo[i] + '</li>';
+  //}
+  //var lista = document.createElement('ul');
+  //lista.innerHTML = elementos;
+  //document.getElementById('app-6').appendChild(lista);
+
+
+
+  var proyectosCont = document.getElementById('misProyectos');
+  for (var i = 0; i < datos.proyectos.length; i++) {
+  	var proyecto = '<img src="'+ datos.proyectos[i].img +'">'
+  					+ '<h3>' + datos.proyectos[i].nombre + '</h3>'
+  					+ '<p>'+ datos.proyectos[i].breve + '</p>';
+  	var cont_proyecto = document.createElement('article');
+  	var modal = document.createElement('div');
+  	cont_proyecto.innerHTML = proyecto;
+  	modal.innerHTML = '<i>&times;</i><br>' + datos.proyectos[i].descripcion;
+  	proyectosCont.appendChild(cont_proyecto);
+  	proyectosCont.appendChild(modal);
+  	modal.classList.add('modal');
+  	cont_proyecto.id = i;
+  	modal.id = 'modal-'+i;
+  	cont_proyecto.addEventListener("click", function() {abrirModal(this.id);});
+   	proyecto = '';
+  }
+
+  function abrirModal(x){
+  	var modalBox = document.getElementById('modal-'+x);
+  	modalBox.classList.add('open');
+  	for (var i = 0; i < datos.proyectos[x].imgs_compl.length; i++) {
+  		modalBox.getElementsByTagName('img')[i].src = datos.proyectos[x].imgs_compl[i]
+  	}
+  	var cerrar = modalBox.getElementsByTagName("i")[0];
+  	cerrar.addEventListener("click", function() {this.parentElement.classList.remove('open');});
+  }
+
+  document.getElementById('correo').addEventListener("copy", function() {
+  	alert('Atención: La dirección de correo no se ha copiado completamente. Debes añadir el @ y el punto antes de "cl" para poder enviarme un correo.\n\n Esto está hecho así para evitar posible spam mediante "Email-address harvesting"');
+  });
+
+
+  document.body.onload = function(){
+  	document.body.style.opacity='100';
+  }
+
+
+	document.getElementById("hamburguesa").onclick = function(){
+		menu.classList.toggle("abierto");
+		this.classList.toggle("abierto");
+	};
+
+	var secciones = document.getElementById('secciones');
+	var el1Y = document.getElementById('about').offsetTop;
+	var el2Y = document.getElementById('proyectos').offsetTop;
+
+	window.onscroll = function() {
+		var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+		var el;
+		if (scroll>el2Y) {
+			el=2;
+		} else if (scroll>el1Y) {
+			el=1
+		} else {
+			el=0;
+		}
+		for (var i = 0; i < secciones.children.length; i++) {
+			secciones.children[i].classList.remove('activo')
+		}
+		secciones.children[el].classList.add('activo')
+	};
+
+</script>
+
+<script>
+VANTA.NET({
+  el: "#principal",
+  mouseControls: true,
+  touchControls: true,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x3fffbb,
+  backgroundColor: 0x152b3c,
+  points: 5.00,
+  spacing: 25.00,
+  forceAnimate: true
+})
+</script>

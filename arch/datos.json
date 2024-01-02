@@ -1,0 +1,71 @@
+var datos = {	
+	"edad":23,
+	"año":"sexto",
+	"todo": ["esta lista","se encuentra en","el archivo json","y luego se muestra con javascript"],
+	"proyectos": [
+		{
+			"nombre":"Teclado Dactyl Manuform",
+			"img":"img/pr8-min.jpg",
+			"imgs_compl":["img/pr8-min.jpg", "img/teclado-2.jpg"],
+			"fecha":"31/03/2022",
+			"breve":"Teclado split ergonómico ortolineal.",
+			"descripcion":" Teclado split ergonómico ortolineal en español. La carcaza se hizo con la impresora 3D casera.<img><img>"
+		},
+		{
+			"nombre":"Impresora 3D casera",
+			"img":"img/pr7-min.jpg",
+			"imgs_compl":["img/pr7-min.jpg"],
+			"fecha":"01/06/2021",
+			"breve":"Impresora 3D con 35x35x35cm de volúmen máximo.",
+			"descripcion":" Impresora 3D de gran volúmen diseñada y construida de acuerdo a las necesidades y presupuesto. Actualmente se encuentra operativa pero con un plan de mejora para la cama caliente.<img>"
+		},
+		{
+			"nombre":"Minora",
+			"img":"img/pr1-min.jpg",
+			"imgs_compl":["img/pr1-min.jpg","img/minora-2.jpg"],
+			"fecha":"19/05/2020",
+			"breve":"Reloj LED de pared. 30 cm de diámetro, con marco de metal.",
+			"descripcion":"Primera versión en negro. <img> Segunda versión en blanco. <img>"
+		},
+		{
+			"nombre":"La Thing",
+			"img":"img/pr2-min.jpg",
+			"imgs_compl":["img/pr2-min.jpg"],
+			"fecha":"21/05/2020",
+			"breve":"Consola casera hecha a partir de un smartphone en desuso.",
+			"descripcion":"Con un smartphone en desuso, el pcb de un antiguo teclado de membrana, botones, cartón y resina epóxica nace esta pequeña consola portátil para emular juegos antiguos. <img>"
+		},
+		{
+			"nombre":"Alámpara",
+			"img":"img/pr3-min.jpg",
+			"imgs_compl":["img/pr3-min.jpg"],
+			"fecha":"09/06/2020",
+			"breve":"Pequeño sistema de luces \"inteligentes\".",
+			"descripcion":"Sistema simple para controlar algunas luces de la casa desde una página web.<img>"
+		},
+		{
+			"nombre":"TinyClock",
+			"img":"img/pr4-min.jpg",
+			"imgs_compl":["img/pr4-min.jpg"],
+			"fecha":"09/06/2020",
+			"breve":"Reloj de sobremesa con solo 8 LEDs.",
+			"descripcion":"Reloj muy simple que utiliza un microcontrolador ATtiny85 que utiliza la frecuencia de la red eléctrica para calcular el tiempo transcurrido.<img>"
+		},
+		{
+			"nombre":"Esta página web",
+			"img":"img/pr5-min.jpg",
+			"imgs_compl":[],
+			"fecha":"09/06/2020",
+			"breve":"Los proyectos están contenidos en un archivo JSON.",
+			"descripcion":"Esta página web está desarrollada por mí e implementa un sistema para que los proyectos se puedan agregar o modificar cambiando un archivo JSON en lugar de modificar directamente el HTML."
+		},
+		{
+			"nombre":"Sitio web CoR 2018",
+			"img":"img/pr6-min.jpg",
+			"imgs_compl":[],
+			"fecha":"09/06/2020",
+			"breve":"Sitio web estático para la Competencia de Robótica 2018.",
+			"descripcion":"Sitio web informativo construido con HTML, CSS y javascript"
+		}
+	]
+}
